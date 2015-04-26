@@ -1,0 +1,3 @@
+[submodule "ATLauncher"]
+	path = ATLauncher
+	url = https://github.com/ATLauncher/ATLauncher

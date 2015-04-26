@@ -1,0 +1,74 @@
+From 4bb37d5380d8f03321d0b50e71f171a8960ea568 Mon Sep 17 00:00:00 2001
+From: Jamie Mansfield <malgm@lapis.blue>
+Date: Sun, 26 Apr 2015 17:28:41 +0100
+Subject: [PATCH] [1.0.0.1] Initial customisation
+
+
+diff --git a/pom.xml b/pom.xml
+index 90cf194..3fd9f72 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -3,10 +3,10 @@
+ <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+     <modelVersion>4.0.0</modelVersion>
+-    <groupId>com.atlauncher</groupId>
+-    <artifactId>atlauncher</artifactId>
+-    <name>ATLauncher</name>
+-    <version>3.2.2.7</version>
++    <groupId>uk.jamierocks.uno</groupId>
++    <artifactId>launcher</artifactId>
++    <name>UnoLauncher</name>
++    <version>1.0.0.1</version>
+     <organization>
+         <name>ATLauncher</name>
+         <url>http://www.github.com/ATLauncher/</url>
+diff --git a/src/main/java/com/atlauncher/data/.gitignore b/src/main/java/com/atlauncher/data/.gitignore
+deleted file mode 100644
+index a6111f4..0000000
+--- a/src/main/java/com/atlauncher/data/.gitignore
++++ /dev/null
+@@ -1,4 +0,0 @@
+-# Don't remove this, this is necessary to generate correct server details for the Launcher
+-# Please read the README.md at the base of the repo for more information
+-
+-Constants.java
+\ No newline at end of file
+diff --git a/src/main/java/com/atlauncher/data/Constants.java b/src/main/java/com/atlauncher/data/Constants.java
+new file mode 100644
+index 0000000..dcb7925
+--- /dev/null
++++ b/src/main/java/com/atlauncher/data/Constants.java
+@@ -0,0 +1,16 @@
++package com.atlauncher.data;
++
++public class Constants {
++
++    public static final LauncherVersion VERSION;
++    public static final String LAUNCHER_NAME = "UnoLauncher";
++    public static final String API_BASE_URL = ""; // Don't have an API :(
++    public static final String PASTE_CHECK_URL = ""; // Don't hava a stikked instance either :(
++    public static final String PASTE_API_URL = ""; // Same as above
++    public static final Server[] SERVERS;
++
++    static {
++        VERSION = new LauncherVersion(3, 2, 2, 6, 0);
++        SERVERS = new Server[] { new Server("Auto", "files.uno.jamierocks.uk", true, true) };
++    }
++}
+diff --git a/src/main/java/com/atlauncher/data/Server.java b/src/main/java/com/atlauncher/data/Server.java
+index 4c49ddf..71492b0 100644
+--- a/src/main/java/com/atlauncher/data/Server.java
++++ b/src/main/java/com/atlauncher/data/Server.java
+@@ -54,7 +54,7 @@ public class Server {
+     }
+ 
+     public String getHost() {
+-        return (this.baseURL.contains("/containers/atl") ? this.baseURL.replace("/containers/atl", "") : this.baseURL);
++        return this.baseURL; // It isn't in any sub directories
+     }
+ 
+     public String getName() {
+-- 
+1.9.5 (Apple Git-50.3)
+
